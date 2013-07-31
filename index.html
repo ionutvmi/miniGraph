@@ -1,87 +1,316 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>MiniChart Plugin</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Minigraph : A small plugin that will generate lightweight graphs/charts." />
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link href="http://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+	<style>
+			/* Sidenav for Docs
+		-------------------------------------------------- */
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+		.bs-docs-sidenav {
+			position: fixed;
+			width: 228px;
+			margin: 30px 0 0;
+			padding: 0;
+			background-color: #fff;
+			-webkit-border-radius: 6px;
+				 -moz-border-radius: 6px;
+							border-radius: 6px;
+			-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+				 -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+							box-shadow: 0 1px 4px rgba(0,0,0,.065);
+		}
+		.bs-docs-sidenav > li > a {
+			display: block;
+			width: 190px \9;
+			margin: 0 0 -1px;
+			padding: 8px 14px;
+			border: 1px solid #e5e5e5;
+		}
+		.bs-docs-sidenav > li:first-child > a {
+			-webkit-border-radius: 6px 6px 0 0;
+				 -moz-border-radius: 6px 6px 0 0;
+							border-radius: 6px 6px 0 0;
+		}
+		.bs-docs-sidenav > li:last-child > a {
+			-webkit-border-radius: 0 0 6px 6px;
+				 -moz-border-radius: 0 0 6px 6px;
+							border-radius: 0 0 6px 6px;
+		}
+		.bs-docs-sidenav > .active > a {
+			position: relative;
+			z-index: 2;
+			padding: 9px 15px;
+			border: 0;
+			text-shadow: 0 1px 0 rgba(0,0,0,.15);
+			-webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+				 -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+							box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+		}
 
-    <title>Minigraph</title>
-  </head>
+		canvas {
+			border: 1px solid black;
+		}
+	</style>
+</head>
 
-  <body>
+<body data-target="#navparent" data-spy="scroll">
+	<header>
+		<h1 class='text-center'>
+			MiniGraph Plugin
+		</h1>
+	</header>
+	<div class="container">
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ionutvmi/miniGraph">View on GitHub</a>
+	<div class="row">
 
-          <h1 id="project_title">Minigraph</h1>
-          <h2 id="project_tagline">A small plugin that will generate lightweight graphs/charts.</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/ionutvmi/miniGraph/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/ionutvmi/miniGraph/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+			<div class="span3 bs-docs-sidebar" id="navparent">
+				<ul class="nav nav-list bs-docs-sidenav navex" data-spy="affix">
+				<li><a href="#one"><i class="icon-chevron-right"></i> 	Line Graph</a></li>
+				<li><a href="#two"><i class="icon-chevron-right"></i> 	Bar Graph</a></li>
+				<li><a href="#three"><i class="icon-chevron-right"></i> Pie Graph</a></li>
+			</ul>
+		</div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="minigraph-plugin" class="anchor" href="#minigraph-plugin"><span class="octicon octicon-link"></span></a>MiniGraph Plugin</h1>
 
-<p>Really simple graph plugin with some basic features.  </p>
+		<div class="span8">
+			<section id="one">
+				<h3>Line Graph</h3>
+				<div class="line"></div>
 
-<h2>
-<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
+<pre class="prettyprint linenums" id="linecode">
+var data = {
+	'labels' : ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul'],
+	'datasets' : [
+		{
+			strokeColor : "rgba(220,220,220,1)",
+			pointColor : "#000",
+			data : [65,59,90,81,56,55,40]
+		},
+		{
+			strokeColor : "rgba(151,187,205,1)",
+			pointColor : "#00ff00",
+			data : [20,48,40,12,96,27,110]
+		}
+	]
+};
+options = {
+	bg_color: '#eee'
+};
+$('.line').miniGraph("line", data, options);
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'labels'</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'Jan'</span><span class="p">,</span> <span class="s1">'Feb'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span><span class="s1">'Apr'</span><span class="p">,</span> <span class="s1">'May'</span><span class="p">,</span> <span class="s1">'Jun'</span><span class="p">,</span> <span class="s1">'Jul'</span><span class="p">],</span>
-    <span class="s1">'datasets'</span> <span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nx">strokeColor</span> <span class="o">:</span> <span class="s2">"rgba(220,220,220,1)"</span><span class="p">,</span>
-            <span class="nx">pointColor</span> <span class="o">:</span> <span class="s2">"#000"</span><span class="p">,</span>
-            <span class="nx">data</span> <span class="o">:</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span><span class="mi">59</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">56</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nx">strokeColor</span> <span class="o">:</span> <span class="s2">"rgba(151,187,205,1)"</span><span class="p">,</span>
-            <span class="nx">pointColor</span> <span class="o">:</span> <span class="s2">"#00ff00"</span><span class="p">,</span>
-            <span class="nx">data</span> <span class="o">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">96</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">110</span><span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">};</span>
-<span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">bg_color</span><span class="o">:</span> <span class="s1">'#eee'</span>
-<span class="p">};</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'.line'</span><span class="p">).</span><span class="nx">miniGraph</span><span class="p">(</span><span class="s2">"line"</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
-</pre></div>
+</pre>
+			<h4>Default options</h4>
+<pre class="prettyprint linenums">
+options =  {
+	width : 600,
+	height : 400,
+	bg_color : '#eee',
+	gridColor : '#ccc',
+	baizerCurve : true,
+	showLabels : true,
+	showGrid : true,
+	showDots : true,
+	textSize : 14,
+	textColor: '#00ff00'
+};
+</pre>
+			</section>
 
-<p>Available Graphs:</p>
+			<section id="two">
+				<h3>Bar Graph</h3>
+				<div class="bar"></div>
 
-<ul>
-<li>line</li>
-<li>bar</li>
-<li>pie</li>
-</ul><h2>
-<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h2>
+<pre class="prettyprint linenums" id="barcode">
+var data = {
+	'labels' : ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul'],
+	'datasets' : [
+		{
+			strokeColor : "rgba(220,220,220,1)",
+			fillColor : "#000",
+			data : [65,59,90,81,56,55,40]
+		},
+		{
+			strokeColor : "rgba(151,187,205,1)",
+			fillColor : "#00ff00",
+			data : [20,48,40, 12,96,27,110]
+		}
+	]
+};
 
-<p>You can find a demo in the html file.</p>
-      </section>
-    </div>
+options = {
+	bg_color: '#eee'
+};
+$('.bar').miniGraph("bar", data, options);
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Minigraph maintained by <a href="https://github.com/ionutvmi">ionutvmi</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+</pre>
 
-    
+			<h4>Default options</h4>
+<pre class="prettyprint linenums">
+options =  {
+	width : 600,
+	height : 400,
+	bg_color : '#eee',
+	gridColor : '#ccc',
+	barSpacing : 5,
+	showLabels : true,
+	showGrid : true,
+	textSize : 14,
+	textColor: '#00ff00',
 
-  </body>
+};
+</pre>
+			</section>
+
+			<section id="three">
+				<h3>Pie Graph</h3>
+				<div class="pie"></div>
+
+<pre class="prettyprint linenums" id="barcode">
+var data =[
+	{
+		value: 30,
+		color:"#F38630"
+	},
+	{
+		value : 50,
+		color : "#E0E4CC"
+	},
+	{
+		value : 100,
+		color : "#69D2E7"
+	}
+];
+options = {
+	bg_color: '#eee'
+};
+$('.pie').miniGraph("pie", data, options);
+
+</pre>
+
+			<h4>Default options</h4>
+<pre class="prettyprint linenums">
+options =  {
+	width : 600,
+	height : 400,
+	bg_color : '#eee',
+	showStroke : true,
+	showLabels : true,
+	strokeWidth : 3,
+	strokeColor : '#fff',
+	textSize : 15,
+	textColor: '#000'		
+};
+</pre>
+
+			</section>
+		</div>
+
+
+	</div><!--/row-->
+	</div><!--/container-->
+	<footer class="well text-center">
+		Mihai Ionut Vilcu(ionutvmi@gmail.com)
+	</footer>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js"></script>
+	<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-affix.js"></script>
+	<script src="http://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.js"></script>
+
+
+
+	<script src="javascript/jquery.miniGraph.js"></script>
+
+
+
+	<script>
+	!function ($) {
+	// @prettify*
+		$(function(){
+		window.prettyPrint && prettyPrint()
+		})
+	// #prettify
+
+
+
+
+	var data = {
+		//'labels' : ['Jansss', 'Fez', 'Mss','Jan', 'Feb', 'Mssa','Jansss', 'Feb', 'Mssa','Jansss', 'Feb', 'Mssa','Jansss', 'Feb', 'Mssa','Jansss', 'Feb', 'Mssa','Jansss', 'Feb'],
+		//'labels' : ['Jansss', 'Fez', 'Mss','Jan', 'Feb', 'Mssa','Jansss', 'Feb', 'Mssa','Jansss', 'Feb', 'Mssa'],
+		'labels' : ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul'],
+		'datasets' : [
+			{
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "#000",
+				data : [65,59,90,81,56,55,40]
+			},
+			{
+				strokeColor : "rgba(151,187,205,1)",
+				pointColor : "#00ff00",
+				data : [20,48,40, 12,96,27,110]
+			}
+		]
+	};
+
+	var data2 = {
+
+		'labels' : ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul'],
+		'datasets' : [
+			{
+				strokeColor : "rgba(220,220,220,1)",
+				fillColor : "#000",
+				data : [65,59,90,81,56,55,40]
+			},
+			{
+				strokeColor : "rgba(151,187,205,1)",
+				fillColor : "#00ff00",
+				data : [20,48,40, 12,96,27,110]
+			}
+		]
+	};
+
+	var data3 =[
+		{
+			name : "Germany",
+			value: 30,
+			color:"#F38630"
+		},
+		{
+			name : "Spain",
+			value : 50,
+			color : "#E0E4CC"
+		},
+		{
+			name : "Romania",
+			value : 100,
+			color : "#69D2E7"
+		}
+	];
+
+	$('.line').miniGraph("line", data);
+	$('.bar').miniGraph("bar", data2);
+	$('.pie').miniGraph("pie", data3);
+
+
+
+
+	}(window.jQuery);
+
+	</script>
+</body>
 </html>
+
+
+
