@@ -34,4 +34,4 @@ Available Graphs:
 
 Demo
 ------------
-You can find a demo in the html file.
+You can find a demo in the html file or [here](http://ionutvmi.github.io/miniGraph).
