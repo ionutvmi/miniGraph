@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Minigraph : A small plugin that will generate lightweight graphs/charts." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Minigraph</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ionutvmi/miniGraph">View on GitHub</a>
+
+          <h1 id="project_title">Minigraph</h1>
+          <h2 id="project_tagline">A small plugin that will generate lightweight graphs/charts.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ionutvmi/miniGraph/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ionutvmi/miniGraph/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="minigraph-plugin" class="anchor" href="#minigraph-plugin"><span class="octicon octicon-link"></span></a>MiniGraph Plugin</h1>
+
+<p>Really simple graph plugin with some basic features.  </p>
+
+<h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'labels'</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'Jan'</span><span class="p">,</span> <span class="s1">'Feb'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span><span class="s1">'Apr'</span><span class="p">,</span> <span class="s1">'May'</span><span class="p">,</span> <span class="s1">'Jun'</span><span class="p">,</span> <span class="s1">'Jul'</span><span class="p">],</span>
+    <span class="s1">'datasets'</span> <span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">strokeColor</span> <span class="o">:</span> <span class="s2">"rgba(220,220,220,1)"</span><span class="p">,</span>
+            <span class="nx">pointColor</span> <span class="o">:</span> <span class="s2">"#000"</span><span class="p">,</span>
+            <span class="nx">data</span> <span class="o">:</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span><span class="mi">59</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">56</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">strokeColor</span> <span class="o">:</span> <span class="s2">"rgba(151,187,205,1)"</span><span class="p">,</span>
+            <span class="nx">pointColor</span> <span class="o">:</span> <span class="s2">"#00ff00"</span><span class="p">,</span>
+            <span class="nx">data</span> <span class="o">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">96</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">110</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">};</span>
+<span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">bg_color</span><span class="o">:</span> <span class="s1">'#eee'</span>
+<span class="p">};</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'.line'</span><span class="p">).</span><span class="nx">miniGraph</span><span class="p">(</span><span class="s2">"line"</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</pre></div>
+
+<p>Available Graphs:</p>
+
+<ul>
+<li>line</li>
+<li>bar</li>
+<li>pie</li>
+</ul><h2>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h2>
+
+<p>You can find a demo in the html file.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Minigraph maintained by <a href="https://github.com/ionutvmi">ionutvmi</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
