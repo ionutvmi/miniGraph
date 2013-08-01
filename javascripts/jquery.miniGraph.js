@@ -10,11 +10,11 @@
 // scripts and/or other plugins which may not be closed properly.
 ;(function ( $, window, document, undefined ) {
 
-  // Create the defaults once
+	// Create the defaults once
 	var pluginName = "miniGraph",
 		defaults = {
 			width : 600,
-			height : 400,
+			height : 200,
 			bg_color : '#eee',
 			textSize : 15,
 			textColor: '#000'
@@ -74,7 +74,7 @@
 			if(!(this.ctx = $(this.element)[0].getContext('2d')))
 				throw new Error("There was a problem with the canvas element.");
 			
-			this.topOffset = 6; // we move the the labels/grind/values a bit lower so we can see them
+			this.topOffset = this.options.textSize/2; // we move the the labels/grind/values a bit lower so we can see them
 
 			// setting the width and height
 			this.ctx.canvas.width = this.options.width;
@@ -210,7 +210,7 @@
 						spp = 0.5;
 
 					ctx.beginPath();
-					xPos = this.xPos(j) + (barWidth + barSpacing * spp) * i;
+					xPos = this.xPos(j,1) + (barWidth + barSpacing * spp) * i;
 					yPos = this.yPos(i,j);
 
 					ctx.moveTo(xPos, height);
@@ -346,11 +346,11 @@
 
 			scaleHop = this.getDrawHeight(ctx, data)/calc.steps;
 
-			for (var i = 0, j = calc.steps; i < calc.steps; i++, j--) {
+			for (var i = 0; i < calc.steps; i++) {
 
 				ctx.beginPath();
-				ctx.moveTo(this.xPadding, scaleHop*(i+1) - this.options.textSize + this.topOffset - this.options.textSize/2.5);
-				ctx.lineTo(this.options.width, scaleHop*(i+1) - this.options.textSize + this.topOffset - this.options.textSize/2.5);
+				ctx.moveTo(this.xPadding, scaleHop*(i+1) - this.options.textSize + this.topOffset/2);
+				ctx.lineTo(this.options.width, scaleHop*(i+1) - this.options.textSize + this.topOffset/2);
 				ctx.stroke();				
 			}			
 			ctx.restore();
@@ -385,7 +385,7 @@
 			}
 
 
-			return this.options.width - max - 5;
+			return this.options.width - max - 6;
 		},
 
 		// get the max draw height
